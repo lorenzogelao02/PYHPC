@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-temp = np.load(r"C:\Users\Juri\OneDrive\Studium\Master\Lehrmaterial\Python and High-Performance Computing\Assignments\Mini project\floorplan_data\23_domain.npy")
-mask = np.load(r"C:\Users\Juri\OneDrive\Studium\Master\Lehrmaterial\Python and High-Performance Computing\Assignments\Mini project\floorplan_data\23_interior.npy")
+temp = np.load(r"floorplan_data/23_domain.npy")
+mask = np.load(r"floorplan_data/23_interior.npy")
 
 # fig, ax = plt.subplots(1, 2)
 # im_temp = ax[0].imshow(temp, origin='lower', cmap='viridis', aspect='equal')
@@ -29,8 +29,8 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.colorbar(im_temp, label='Temperature')
 plt.tight_layout()
-# plt.savefig(r'C:\Users\Juri\OneDrive\Studium\Master\Lehrmaterial\Python and High-Performance Computing\Assignments\Mini project\report\images\23_initVal.png', dpi=600, bbox_inches = 'tight')
-plt.show()
+plt.savefig(r'floorplan_data/23_initVal.png', dpi=600, bbox_inches = 'tight')
+# plt.show()
 
 plt.figure()
 im_mask = plt.imshow(mask, origin='lower', cmap='viridis', aspect='equal')
@@ -40,8 +40,8 @@ plt.xlabel('x')
 plt.ylabel('y')
 # plt.colorbar(im_mask, label='Value')
 plt.tight_layout()
-# plt.savefig(r'C:\Users\Juri\OneDrive\Studium\Master\Lehrmaterial\Python and High-Performance Computing\Assignments\Mini project\report\images\23_interior.png', dpi=600, bbox_inches = 'tight')
-plt.show()
+plt.savefig(r'floorplan_data/23_interior.png', dpi=600, bbox_inches = 'tight')
+# plt.show()
 
 # plt.show()
 

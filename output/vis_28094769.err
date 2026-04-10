@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/zhome/b6/8/228751/py_hpc/mini_project/python/visualization_sim.py", line 74, in <module>
+    im_sim = ax[0].imshow(all_u, origin='lower', cmap='viridis', aspect='equal')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/__init__.py", line 1465, in inner
+    return func(ax, *map(sanitize_sequence, args), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/axes/_axes.py", line 5751, in imshow
+    im.set_data(X)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/image.py", line 723, in set_data
+    self._A = self._normalize_image_array(A)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/image.py", line 693, in _normalize_image_array
+    raise TypeError(f"Invalid shape {A.shape} for image data")
+TypeError: Invalid shape (1, 514, 514) for image data
