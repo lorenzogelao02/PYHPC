@@ -1,0 +1,98 @@
+building_id, mean_temp, std_temp, pct_above_18, pct_below_15
+10000, 14.01233878811275, 6.367431059312565, 30.941014791508444, 55.542295034537624
+10009, 11.000135812436373, 5.811144379826625, 16.6712734948236, 74.9723590310584
+10014, 14.744169941950119, 7.037733284673848, 38.26367541377415, 52.80837116508215
+10019, 14.735524480624482, 7.030325006703675, 38.14915412864569, 52.92926826787113
+10029, 10.616037322820358, 6.317331938274926, 18.25563221896085, 74.51301795448481
+10031, 12.507072852890545, 6.278432089100354, 24.044722033998173, 66.39513301711693
+10051, 13.289039951277402, 5.999085063388632, 25.97693550756574, 62.859923608050536
+10053, 11.366493551285709, 6.26121798185875, 19.9510754583921, 72.41052538787024
+10056, 14.220114507861702, 6.179461157398302, 31.763454814173965, 57.06174975667784
+10064, 12.71696893739585, 6.964227784263683, 28.79137124461432, 62.75688345539249
+Wrote profile results to jacobi_profile.py.lprof
+Inspect results with:
+python -m line_profiler -rmt "jacobi_profile.py.lprof"
+Timer unit: 1e-06 s
+
+Total time: 125.097 s
+File: python/jacobi_profile.py
+Function: jacobi at line 14
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    14                                           @profile
+    15                                           def jacobi(u, interior_mask, max_iter, atol=1e-6):
+    16        10       6620.6    662.1      0.0      u = np.copy(u)
+    17                                           
+    18     47282      45493.1      1.0      0.0      for i in range(max_iter):
+    19                                                   # Compute average of left, right, up and down neighbors, see eq. (1)
+    20     47282   76652044.4   1621.2     61.3          u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
+    21     47282   11495394.4    243.1      9.2          u_new_interior = u_new[interior_mask]
+    22     47282   24642626.1    521.2     19.7          delta = np.abs(u[1:-1, 1:-1][interior_mask] - u_new_interior).max()
+    23     47282   12150090.7    257.0      9.7          u[1:-1, 1:-1][interior_mask] = u_new_interior
+    24                                           
+    25     47282     105052.3      2.2      0.1          if delta < atol:
+    26        10          7.6      0.8      0.0              break
+    27        10          3.3      0.3      0.0      return u
+
+125.10 seconds - python/jacobi_profile.py:14 - jacobi
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28095228: <profiling> in cluster <dcc> Done
+
+Job <profiling> was submitted from host <n-62-9-42> by user <s257640> in cluster <dcc> at Tue Mar 24 14:48:57 2026
+Job was executed on host(s) <n-62-11-63>, in queue <hpc>, as user <s257640> in cluster <dcc> at Tue Mar 24 14:48:58 2026
+</zhome/b6/8/228751> was used as the home directory.
+</zhome/b6/8/228751/py_hpc/mini_project> was used as the working directory.
+Started at Tue Mar 24 14:48:58 2026
+Terminated at Tue Mar 24 14:51:05 2026
+Results reported at Tue Mar 24 14:51:05 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J profiling
+#BSUB -q hpc
+#BSUB -W 15
+#BSUB -o output/profiling_%J.out
+#BSUB -e output/profiling_%J.err
+#BSUB -n 1
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4096MB]"
+#BSUB -R "select[model==XeonGold6226R]"
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613
+
+#Run script
+kernprof -l python/jacobi_profile.py 10
+python -m line_profiler -rmt "jacobi_profile.py.lprof"
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   126.91 sec.
+    Max Memory :                                 71 MB
+    Average Memory :                             71.00 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               4025.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   127 sec.
+    Turnaround time :                            128 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <output/profiling_28095228.err> for stderr output of this job.
+

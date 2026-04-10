@@ -1,0 +1,6 @@
+Loaded module: cuda/11.8
+Traceback (most recent call last):
+  File "/zhome/b6/8/228751/py_hpc/mini_project/python/sim_timing.py", line 80, in <module>
+    time = time.time()-time
+           ^^^^^^^^^
+AttributeError: 'float' object has no attribute 'time'

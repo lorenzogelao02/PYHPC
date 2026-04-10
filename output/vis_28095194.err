@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/zhome/b6/8/228751/py_hpc/mini_project/python/visualization_sim.py", line 70, in <module>
+    u = jacobi(u0, interior_mask, MAX_ITER, ABS_TOL)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/b6/8/228751/py_hpc/mini_project/python/visualization_sim.py", line 22, in jacobi
+    delta = np.abs(u[1:-1, 1:-1][interior_mask] - u_new_interior).max()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

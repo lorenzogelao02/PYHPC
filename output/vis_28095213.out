@@ -1,0 +1,60 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28095213: <vis> in cluster <dcc> Exited
+
+Job <vis> was submitted from host <n-62-9-42> by user <s257640> in cluster <dcc> at Tue Mar 24 14:45:01 2026
+Job was executed on host(s) <n-62-11-69>, in queue <hpc>, as user <s257640> in cluster <dcc> at Tue Mar 24 14:45:03 2026
+</zhome/b6/8/228751> was used as the home directory.
+</zhome/b6/8/228751/py_hpc/mini_project> was used as the working directory.
+Started at Tue Mar 24 14:45:03 2026
+Terminated at Tue Mar 24 14:45:12 2026
+Results reported at Tue Mar 24 14:45:12 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J vis
+#BSUB -q hpc
+#BSUB -W 15
+#BSUB -o output/vis_%J.out
+#BSUB -e output/vis_%J.err
+#BSUB -n 1
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4096MB]"
+#BSUB -R "select[model==XeonGold6226R]"
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613
+
+#Run script
+python -u python/visualization_sim.py 10
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 130.
+
+Resource usage summary:
+
+    CPU time :                                   8.86 sec.
+    Max Memory :                                 335 MB
+    Average Memory :                             335.00 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               3761.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   9 sec.
+    Turnaround time :                            11 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <output/vis_28095213.err> for stderr output of this job.
+

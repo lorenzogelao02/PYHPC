@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/line_profiler/__main__.py", line 4, in <module>
+    main()
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/line_profiler/line_profiler.py", line 526, in main
+    lstats = load_stats(args.profile_output)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/line_profiler/line_profiler.py", line 476, in load_stats
+    with open(filename, 'rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'python/jacobi_profile.py.lprof'

@@ -1,0 +1,46 @@
+Traceback (most recent call last):
+  File "/zhome/b6/8/228751/py_hpc/mini_project/python/visualization_sim.py", line 82, in <module>
+    plt.savefig(name, dpi = 600, bbox_inches = 'tight')
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/pyplot.py", line 1119, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/figure.py", line 3390, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2158, in print_figure
+    self.figure.draw(renderer)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/artist.py", line 95, in draw_wrapper
+    result = draw(artist, renderer, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/artist.py", line 72, in draw_wrapper
+    return draw(artist, renderer)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/figure.py", line 3154, in draw
+    mimage._draw_list_compositing_images(
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/image.py", line 132, in _draw_list_compositing_images
+    a.draw(renderer)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/artist.py", line 72, in draw_wrapper
+    return draw(artist, renderer)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/axes/_base.py", line 3070, in draw
+    mimage._draw_list_compositing_images(
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/image.py", line 132, in _draw_list_compositing_images
+    a.draw(renderer)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/artist.py", line 72, in draw_wrapper
+    return draw(artist, renderer)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/image.py", line 649, in draw
+    im, l, b, trans = self.make_image(
+                      ^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/image.py", line 939, in make_image
+    return self._make_image(self._A, bbox, transformed_bbox, clip,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/image.py", line 569, in _make_image
+    output = self.to_rgba(output, bytes=True, norm=False)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/cm.py", line 509, in to_rgba
+    rgba = self.cmap(x, alpha=alpha, bytes=bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613/lib/python3.11/site-packages/matplotlib/colors.py", line 743, in __call__
+    xa = xa.astype(int)
+         ^^^^^^^^^^^^^^
+KeyboardInterrupt

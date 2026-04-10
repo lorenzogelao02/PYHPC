@@ -11,7 +11,7 @@
 
 #Initialize python env
 source /dtu/projects/02613_2025/conda/conda_init.sh
-conda activate 02613
+conda activate 02613_2026
 
 #Run script
-python -u python/simulate.py 10
+python -u python/sim_timing.py 20

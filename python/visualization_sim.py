@@ -4,9 +4,6 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-# temp = np.load(r"C:\Users\juri-\OneDrive\Studium\Master\Lehrmaterial\Python and High-Performance Computing\Assignments\Mini project\floorplan_data\23_domain.npy")
-# mask = np.load(r"C:\Users\juri-\OneDrive\Studium\Master\Lehrmaterial\Python and High-Performance Computing\Assignments\Mini project\floorplan_data\23_interior.npy")
-
 def load_data(load_dir, bid):
     SIZE = 512
     u = np.zeros((SIZE + 2, SIZE + 2))
@@ -73,24 +70,21 @@ if __name__ == '__main__':
         u = jacobi(u0, interior_mask, MAX_ITER, ABS_TOL)
         all_u[i] = u
 
+        #Visualization
+        plt.figure()
+        im_sim = plt.imshow(u, origin='lower', cmap='viridis', aspect='equal')
+        plt.title('Sim_results')
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.colorbar(im_sim, label='Temperature')
+        plt.tight_layout()
+        name = str('vis'+str(i+1)+'.png')
+        plt.savefig(name, dpi = 600, bbox_inches = 'tight')
+        # plt.show()
+
     # Print summary statistics in CSV format
     stat_keys = ['mean_temp', 'std_temp', 'pct_above_18', 'pct_below_15']
     print('building_id, ' + ', '.join(stat_keys))  # CSV header
     for bid, u, interior_mask in zip(building_ids, all_u, all_interior_mask):
         stats = summary_stats(u, interior_mask)
         print(f"{bid},", ", ".join(str(stats[k]) for k in stat_keys))
-
-    fig, ax = plt.subplots(1, 2)
-    im_sim = ax[0].imshow(all_u, origin='lower', cmap='viridis', aspect='equal')
-    # ax[0].set_colorbar(label='value')
-    ax[0].set_title('Sim_results')
-    ax[0].set_xlabel('x')
-    ax[0].set_ylabel('y')
-    # im_mask = ax[1].imshow(mask, origin='lower', cmap='viridis', aspect='equal')
-    # ax[1].set_title('Interior map')
-    # ax[1].set_xlabel('x')
-    # ax[1].set_ylabel('y')
-    fig.colorbar(im_sim, ax=ax[0], label='value')
-    # fig.colorbar(im_mask, ax=ax[1], label='value')
-    plt.tight_layout()
-    plt.show()
