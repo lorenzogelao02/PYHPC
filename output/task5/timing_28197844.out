@@ -1,0 +1,70 @@
+No GPU on this node, CUDA module not loaded
+Starting scaling benchmark...
+Finished evaluating 1 workers!
+Finished evaluating 2 workers!
+Finished evaluating 4 workers!
+Finished evaluating 6 workers!
+Finished evaluating 8 workers!
+Finished evaluating 10 workers!
+Finished evaluating 12 workers!
+Finished evaluating 16 workers!
+Plot successfully saved to output/task5/speedup_plot.png!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28197844: <timing> in cluster <dcc> Done
+
+Job <timing> was submitted from host <n-62-9-40> by user <s253003> in cluster <dcc> at Mon Apr 13 16:27:38 2026
+Job was executed on host(s) <16*n-62-12-8>, in queue <hpc>, as user <s253003> in cluster <dcc> at Mon Apr 13 16:34:07 2026
+</zhome/21/8/223277> was used as the home directory.
+</zhome/21/8/223277/Desktop/PYHPC> was used as the working directory.
+Started at Mon Apr 13 16:34:07 2026
+Terminated at Mon Apr 13 17:42:47 2026
+Results reported at Mon Apr 13 17:42:47 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J timing
+#BSUB -q hpc
+#BSUB -W 120
+#BSUB -o output/task5/timing_%J.out
+#BSUB -e output/task5/timing_%J.err
+#BSUB -n 16
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4096MB]"
+#BSUB -R "select[model==XeonGold6226R]"
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613_2026
+
+#Run script
+python -u python/Task5/5_simulate_parallel.py 
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   14165.06 sec.
+    Max Memory :                                 1526 MB
+    Average Memory :                             958.69 MB
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               64010.00 MB
+    Max Swap :                                   -
+    Max Processes :                              20
+    Max Threads :                                24
+    Run time :                                   4120 sec.
+    Turnaround time :                            4509 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <output/task5/timing_28197844.err> for stderr output of this job.
+

@@ -1,0 +1,62 @@
+No GPU on this node, CUDA module not loaded
+Starting scaling benchmark...
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28196207: <timing> in cluster <dcc> Exited
+
+Job <timing> was submitted from host <n-62-9-40> by user <s253003> in cluster <dcc> at Mon Apr 13 13:02:44 2026
+Job was executed on host(s) <16*n-62-11-57>, in queue <hpc>, as user <s253003> in cluster <dcc> at Mon Apr 13 13:02:49 2026
+</zhome/21/8/223277> was used as the home directory.
+</zhome/21/8/223277/Desktop/PYHPC> was used as the working directory.
+Started at Mon Apr 13 13:02:49 2026
+Terminated at Mon Apr 13 13:03:00 2026
+Results reported at Mon Apr 13 13:03:00 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J timing
+#BSUB -q hpc
+#BSUB -W 15
+#BSUB -o output/timing_%J.out
+#BSUB -e output/timing_%J.err
+#BSUB -n 16
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4096MB]"
+#BSUB -R "select[model==XeonGold6226R]"
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613_2026
+
+#Run script
+python -u python/5_simulate_parallel.py 8
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 130.
+
+Resource usage summary:
+
+    CPU time :                                   9.61 sec.
+    Max Memory :                                 502 MB
+    Average Memory :                             502.00 MB
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               65034.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                9
+    Run time :                                   11 sec.
+    Turnaround time :                            16 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <output/timing_28196207.err> for stderr output of this job.
+

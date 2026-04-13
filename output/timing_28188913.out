@@ -1,0 +1,61 @@
+No GPU on this node, CUDA module not loaded
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28188913: <timing> in cluster <dcc> Exited
+
+Job <timing> was submitted from host <n-62-30-4> by user <s253003> in cluster <dcc> at Sat Apr 11 16:11:31 2026
+Job was executed on host(s) <20*n-62-11-60>, in queue <hpc>, as user <s253003> in cluster <dcc> at Sat Apr 11 16:11:32 2026
+</zhome/21/8/223277> was used as the home directory.
+</zhome/21/8/223277/Desktop/PYHPC> was used as the working directory.
+Started at Sat Apr 11 16:11:32 2026
+Terminated at Sat Apr 11 16:13:23 2026
+Results reported at Sat Apr 11 16:13:23 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J timing
+#BSUB -q hpc
+#BSUB -W 15
+#BSUB -o output/timing_%J.out
+#BSUB -e output/timing_%J.err
+#BSUB -n 20
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4096MB]"
+#BSUB -R "select[model==XeonGold6226R]"
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613_2026
+
+#Run script
+python -u python/5_simulate_parallel.py 20
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 143.
+
+Resource usage summary:
+
+    CPU time :                                   1701.00 sec.
+    Max Memory :                                 798 MB
+    Average Memory :                             445.33 MB
+    Total Requested Memory :                     81920.00 MB
+    Delta Memory :                               81122.00 MB
+    Max Swap :                                   -
+    Max Processes :                              24
+    Max Threads :                                28
+    Run time :                                   111 sec.
+    Turnaround time :                            112 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <output/timing_28188913.err> for stderr output of this job.
+
