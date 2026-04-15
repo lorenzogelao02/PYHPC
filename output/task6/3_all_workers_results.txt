@@ -1,0 +1,4 @@
+--- Scaling Benchmark Results ---
+Time taken with 10 workers: 257.19 seconds
+Time taken with 12 workers: 254.57 seconds
+Time taken with 16 workers: 261.43 seconds
