@@ -1,0 +1,4 @@
+No GPU on this node, CUDA module not loaded
+Starting chunk size benchmark on 16 workers...
+Finished evaluating chunksize=1!
+Finished evaluating chunksize=3!
