@@ -1,0 +1,2 @@
+--- Chunk Size Benchmark Results ---
+Time taken with chunksize=01: 78.63 seconds

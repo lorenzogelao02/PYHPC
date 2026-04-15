@@ -1,0 +1,24 @@
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7/7_jit_cpu.py", line 120, in process_single
+    u = jacobi(u0, interior_mask, MAX_ITER, ABS_TOL)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7/7_jit_cpu.py", line 86, in jacobi
+    if interior_mask[i, j]:
+       ~~~~~~~~~~~~~^^^^^^
+IndexError: index 512 is out of bounds for axis 1 with size 512
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7/7_jit_cpu.py", line 158, in <module>
+    all_u = list(parallel_results)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/multiprocessing/pool.py", line 873, in next
+    raise value
+IndexError: index 512 is out of bounds for axis 1 with size 512

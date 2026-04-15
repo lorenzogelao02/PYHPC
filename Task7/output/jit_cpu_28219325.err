@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7/7_jit_cpu.py", line 129, in <module>
+    jacobi(dummy_u, dummy_mask, 1, 1e-4)
+  File "/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7/7_jit_cpu.py", line 87, in jacobi
+    u_new_val = 0.25*(u[i-1, j]+u[i+1, j]+u[i, j+1]+u[i, j-1])
+                                          ~^^^^^^^^
+IndexError: index 10 is out of bounds for axis 1 with size 10

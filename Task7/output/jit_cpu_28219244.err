@@ -1,0 +1,40 @@
+Traceback (most recent call last):
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/bin/kernprof", line 11, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/kernprof.py", line 431, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/kernprof.py", line 431, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/kernprof.py", line 431, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/kernprof.py", line 984, in main
+    _main_profile(options, module, exit_on_error)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/kernprof.py", line 1364, in _main_profile
+    _call_with_diagnostics(options, ns[runner], target, ns)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/kernprof.py", line 1231, in _call_with_diagnostics
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/kernprof.py", line 242, in execfile
+    exec(compile(f.read(), filename, 'exec'), globals, locals)
+  File "7_jit_cpu.py", line 133, in <module>
+    jacobi(dummy_u, dummy_mask, 1, 1e-4)
+  File "7_jit_cpu.py", line 86, in jacobi
+    if interior_mask[i, j]:
+       ~~~~~~~~~~~~~^^^^^^
+IndexError: index 8 is out of bounds for axis 1 with size 8
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/line_profiler/__main__.py", line 6, in <module>
+    main()
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/line_profiler/line_profiler.py", line 1284, in main
+    lstats = LineStats.from_files(*args.profile_output)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/line_profiler/line_profiler.py", line 379, in from_files
+    with open(file, 'rb') as f:
+         ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '“/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7/7_jit_cpu.py.lprof”'

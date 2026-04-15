@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/cProfile.py", line 195, in <module>
+    main()
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/cProfile.py", line 184, in main
+    runctx(code, globs, None, options.outfile, options.sort)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/cProfile.py", line 21, in runctx
+    return _pyprofile._Utils(Profile).runctx(statement, globals, locals,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/profile.py", line 64, in runctx
+    prof.runctx(statement, globals, locals)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/cProfile.py", line 102, in runctx
+    exec(cmd, globals, locals)
+  File "7_jit_cpu.py", line 158, in <module>
+    all_u = list(parallel_results)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/multiprocessing/pool.py", line 873, in next
+    raise value
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/multiprocessing/pool.py", line 540, in _handle_tasks
+    put(task)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/multiprocessing/connection.py", line 206, in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/multiprocessing/reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+_pickle.PicklingError: Can't pickle <function process_single at 0x7f6166db2020>: attribute lookup process_single on __main__ failed

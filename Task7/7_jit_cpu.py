@@ -3,6 +3,7 @@ import sys
 
 import numpy as np
 from multiprocessing.pool import Pool
+import multiprocessing as mp
 from itertools import chain
 from numba import jit
   
@@ -13,21 +14,84 @@ def load_data(load_dir, bid):
     interior_mask = np.load(join(load_dir, f"{bid}_interior.npy"))
     return u, interior_mask
 
-@jit(nopython=True)
+#This function is very memory heavy and not well improved by jit. We should probably use another approach
+# @jit(nopython=True)
+# def jacobi(u, interior_mask, max_iter, atol=1e-6):
+#     u = np.copy(u)
+
+#     for i in range(max_iter):
+#         # Compute average of left, right, up and down neighbors, see eq. (1)
+#         u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
+#         u_new_interior = np.where(interior_mask, u_new, 0)
+#         u_masked = np.where(interior_mask, u[1:-1, 1:-1], 0)
+#         delta = np.abs(u_masked - u_new_interior).max()
+#         u[1:-1, 1:-1] = u_new_interior
+#         if delta < atol:
+#             break
+#     return u
+
+#
+# def jacobi(u, interior_mask, max_iter, atol=1e-6):
+#     u_new = np.copy(u)
+#     rows, cols = np.where(interior_mask) #creates tuple (rows, cols) of boolean type
+#     n_cells = rows.shape[0] #number of cells which are relevant to the calculation of the interior
+#     max_diff = 0.0
+#     for _ in range(max_iter):
+#         # Compute average of left, right, up and down neighbors, see eq. (1)
+#         u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
+#         u_new_interior = np.where(interior_mask, u_new, 0)
+#         for i in range(n_cells):
+#             row = rows[i]
+#             col = cols[i]
+#             u_new_val = 0.25*(u[row-1, col]+u[row+1, col]+u[row, col+1]+u[row, col-1])
+#             delta = np.abs(u[row, col]-u_new_val)
+#             if delta > max_diff:
+#                 max_diff=delta
+#             u_new[row, col] = u_new_val
+#         u, u_new = u_new, u
+#         if max_diff < atol:
+#             break
+#     return u
+
+#This resulted in 78.63 with forced spawn and initializer for each worker
+# @jit(nopython=True)
+# def jacobi(u, interior_mask, max_iter, atol=1e-6):
+#     u_new = np.copy(u)
+#     rows, cols = interior_mask
+#     n_cells = rows.shape[0]
+#     max_diff = 0.0
+#     for _ in range(max_iter):
+#         for i in range(n_cells):
+#             row = rows[i]
+#             col = cols[i]
+#             u_new_val = 0.25*(u[row-1, col]+u[row+1, col]+u[row, col+1]+u[row, col-1])
+#             delta = np.abs(u[row, col]-u_new_val)
+#             if delta > max_diff:
+#                 max_diff=delta
+#             u_new[row, col] = u_new_val
+#         u, u_new = u_new, u
+#         if max_diff < atol:
+#             break
+#     return u
+
+#New version to control the memory access which has been random so far
+# @jit(nopython=True)
 def jacobi(u, interior_mask, max_iter, atol=1e-6):
     u = np.copy(u)
-
-    for i in range(max_iter):
-        # Compute average of left, right, up and down neighbors, see eq. (1)
-        u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
-        u_new_interior = u_new[interior_mask]
-        delta = np.abs(u[1:-1, 1:-1][interior_mask] - u_new_interior).max()
-        u[1:-1, 1:-1][interior_mask] = u_new_interior
-
-        if delta < atol:
+    n, m = u.shape
+    max_delta = 0.0
+    for _ in range(max_iter):
+        for i in range(1, n-1):
+            for j in range(1, m-1):
+                if interior_mask[i, j]:
+                    u_new_val = 0.25*(u[i-1, j]+u[i+1, j]+u[i, j+1]+u[i, j-1])
+                    delta = np.abs(u[i, j]-u_new_val)
+                    u[i, j] = u_new_val
+                    if delta > max_delta:
+                        max_delta=delta
+        if max_delta < atol:
             break
     return u
-
 
 def summary_stats(u, interior_mask):
     u_interior = u[1:-1, 1:-1][interior_mask]
@@ -42,14 +106,28 @@ def summary_stats(u, interior_mask):
         'pct_below_15': pct_below_15,
     }
 
+def warmup():
+    dummy_u = np.zeros((10, 10), dtype=np.float64)
+    dummy_mask = np.ones((8, 8), dtype=np.bool_)
+    jacobi(dummy_u, dummy_mask, 1, 1e-4)
+
+# @profile
 def process_single(floorplan):
     MAX_ITER = 20_000
     ABS_TOL = 1e-4
     u0, interior_mask = floorplan
+    # interior_mask = (np.where(interior_mask)) #creates tuple (rows, cols) of boolean type with only the relevant locations
     u = jacobi(u0, interior_mask, MAX_ITER, ABS_TOL)
     return u 
 
-if __name__ == '__main__' : 
+if __name__ == '__main__' :
+    mp.set_start_method('fork', force=True) #Added to force fork and thus make the workers inherit the compiled jacobi function
+    
+    #Use the following process to force the compilation of the jecobi function
+    dummy_u = np.zeros((10, 10), dtype=np.float64)
+    dummy_mask = np.ones((10, 10), dtype=np.bool_)
+    jacobi(dummy_u, dummy_mask, 1, 1e-4)
+
     run_number = sys.argv[1]
     import time
     N = 100

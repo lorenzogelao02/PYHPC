@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/multiprocessing/pool.py", line 856, in next
+    item = self._items.popleft()
+           ^^^^^^^^^^^^^^^^^^^^^
+IndexError: pop from an empty deque
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/threading.py", line 355, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7/7_jit_cpu.py", line 132, in <module>
+    all_u = list(parallel_results)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/multiprocessing/pool.py", line 861, in next
+    self._cond.wait(timeout)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/threading.py", line 364, in wait
+    self._acquire_restore(saved_state)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/threading.py", line 312, in _acquire_restore
+    self._lock.acquire()           # Ignore saved state
+    ^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
