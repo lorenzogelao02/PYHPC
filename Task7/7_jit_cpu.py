@@ -50,7 +50,7 @@ def process_single(floorplan):
     return u 
 
 if __name__ == '__main__' : 
-
+    run_number = sys.argv[1]
     import time
     N = 100
     LOAD_DIR = '/dtu/projects/02613_2025/data/modified_swiss_dwellings/'
@@ -64,10 +64,10 @@ if __name__ == '__main__' :
         floorplans_data.append((u0, interior_mask))
 
     num_workers = 16
-    chunk_sizes = [1, 3, 10]
+    chunk_sizes = [1]#, 3, 10]
     print(f"Starting chunk size benchmark on {num_workers} workers...")
     
-    master_file_path = "output/task6/chunksizes_results.txt"
+    master_file_path = "output/chunksizes_results"+str(run_number)+".txt"
     with open(master_file_path, "w") as out_file:
         out_file.write("--- Chunk Size Benchmark Results ---\n")
 
@@ -125,5 +125,5 @@ if __name__ == '__main__' :
     plt.grid(True, linestyle='--', alpha=0.5)
     plt.tight_layout()
 
-    plt.savefig('output/task6/speedup_plot.png', dpi=300)
-    print("Plot successfully saved to output/task6/3_chunks_speedup_plot.png!")
+    plt.savefig("output/speedup_plot"+str(run_number)+".png", dpi=600, bbox_inches="tight")
+    print("Plot successfully saved to output/speedup_plot"+str(run_number)+".png!")
