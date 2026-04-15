@@ -1,0 +1,2 @@
+--- JIT optimizing Results ---
+Time taken with chunksize=01 and 16 workers and JIT: 19.15 seconds

@@ -15,23 +15,38 @@ def load_data(load_dir, bid):
     return u, interior_mask
 
 #19.17s record ->
-@jit(nopython=True, fastmath=True)
+# @jit(nopython=True, fastmath=True)
+# def jacobi(u, interior_mask, max_iter, atol=1e-6):
+#     u = np.copy(u)
+#     n, m = interior_mask.shape
+#     for _ in range(max_iter):
+#         max_delta = 0.0
+#         for i in range(1, n+1):
+#             for j in range(1, m+1):
+#                 if interior_mask[i-1, j-1]:
+#                     u_new_val = 0.25*(u[i-1, j]+u[i+1, j]+u[i, j+1]+u[i, j-1])
+#                     delta = np.abs(u[i, j]-u_new_val)
+#                     u[i, j] = u_new_val
+#                     if delta > max_delta:
+#                         max_delta=delta
+#         if max_delta < atol:
+#             break
+#     return u
+
 def jacobi(u, interior_mask, max_iter, atol=1e-6):
     u = np.copy(u)
-    n, m = interior_mask.shape
-    for _ in range(max_iter):
-        max_delta = 0.0
-        for i in range(1, n+1):
-            for j in range(1, m+1):
-                if interior_mask[i-1, j-1]:
-                    u_new_val = 0.25*(u[i-1, j]+u[i+1, j]+u[i, j+1]+u[i, j-1])
-                    delta = np.abs(u[i, j]-u_new_val)
-                    u[i, j] = u_new_val
-                    if delta > max_delta:
-                        max_delta=delta
-        if max_delta < atol:
+
+    for i in range(max_iter):
+        # Compute average of left, right, up and down neighbors, see eq. (1)
+        u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
+        u_new_interior = u_new[interior_mask]
+        delta = np.abs(u[1:-1, 1:-1][interior_mask] - u_new_interior).max()
+        u[1:-1, 1:-1][interior_mask] = u_new_interior
+
+        if delta < atol:
             break
     return u
+
 
 def summary_stats(u, interior_mask):
     u_interior = u[1:-1, 1:-1][interior_mask]
@@ -80,7 +95,7 @@ if __name__ == '__main__' :
     
     master_file_path = "output/JITopt_results"+str(run_number)+".txt"
     with open(master_file_path, "w") as out_file:
-        out_file.write("--- JIT optimizing Results ---\n")
+        out_file.write("--- Without JIT optimizing Results ---\n")
 
     times = []
     for c_size in chunk_sizes:
@@ -96,7 +111,7 @@ if __name__ == '__main__' :
         times.append(time_taken)
         with open(master_file_path, "a") as out_file:
             # out_file.write(f"Time taken with chunksize={c_size:02d}: {time_taken:.2f} seconds\n")
-            out_file.write(f"Time taken with chunksize={c_size:02d} and {num_workers:02d} workers and JIT: {time_taken:.2f} seconds\n")
+            out_file.write(f"Time taken with chunksize={c_size:02d} and {num_workers:02d} workers and no JIT: {time_taken:.2f} seconds\n")
             
         print(f"Finished evaluating chunksize={c_size}!")        
         # stat_keys = ['mean_temp', 'std_temp', 'pct_above_18', 'pct_below_15']

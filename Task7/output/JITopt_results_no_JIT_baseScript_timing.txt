@@ -1,0 +1,2 @@
+--- Without JIT optimizing Results ---
+Time taken with chunksize=01 and 16 workers and no JIT: 178.40 seconds

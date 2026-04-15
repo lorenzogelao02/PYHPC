@@ -14,7 +14,8 @@ source /dtu/projects/02613_2025/conda/conda_init.sh
 conda activate 02613_2026
 
 #Run script
-python -u 7_jit_cpu.py profiling
+# python -u 7_jit_cpu.py _JIT_timing
+python -u 7_no_jit.py _no_JIT_baseScript_timing
 # python -m cProfile -s cumulative 7_jit_cpu.py _mem_opt
 # kernprof -l 7_jit_cpu.py profiling
-# python -m line_profiler -rmt r'/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7/7_jit_cpu.py.lprof'
+# python -m line_profiler -rmt "7_jit_cpu.py.lprof"
