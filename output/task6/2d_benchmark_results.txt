@@ -1,0 +1,10 @@
+--- 2D Nested Benchmark Results ---
+Chunksize=01 | Workers=10 | Time: 226.09 seconds
+Chunksize=01 | Workers=12 | Time: 201.55 seconds
+Chunksize=01 | Workers=16 | Time: 179.87 seconds
+Chunksize=03 | Workers=10 | Time: 233.74 seconds
+Chunksize=03 | Workers=12 | Time: 209.99 seconds
+Chunksize=03 | Workers=16 | Time: 188.93 seconds
+Chunksize=10 | Workers=10 | Time: 286.19 seconds
+Chunksize=10 | Workers=12 | Time: 287.32 seconds
+Chunksize=10 | Workers=16 | Time: 284.09 seconds

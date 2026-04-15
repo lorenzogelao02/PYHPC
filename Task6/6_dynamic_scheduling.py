@@ -63,67 +63,60 @@ if __name__ == '__main__' :
         u0, interior_mask = load_data(LOAD_DIR, bid)
         floorplans_data.append((u0, interior_mask))
 
-    num_workers = 16
+    worker_counts = [10, 12, 16]
     chunk_sizes = [1, 3, 10]
-    print(f"Starting chunk size benchmark on {num_workers} workers...")
+    print(f"Starting 2D benchmark on workers={worker_counts} and chunksizes={chunk_sizes}...")
     
-    master_file_path = "output/task6/chunksizes_results.txt"
+    master_file_path = "output/task6/2d_benchmark_results.txt"
     with open(master_file_path, "w") as out_file:
-        out_file.write("--- Chunk Size Benchmark Results ---\n")
+        out_file.write("--- 2D Nested Benchmark Results ---\n")
 
-    times = []
+    results_matrix = {c: [] for c in chunk_sizes}
+
     for c_size in chunk_sizes:
+        for num_workers in worker_counts:
+            start_time = time.time()
+            with Pool(num_workers) as pool:
+                parallel_results = pool.imap_unordered(process_single, floorplans_data, chunksize=c_size)
+                all_u = list(parallel_results)
+            end_time = time.time()
         
-        start_time = time.time()
-        with Pool(num_workers) as pool:
-            parallel_results = pool.imap_unordered(process_single, floorplans_data, chunksize=c_size)
-            all_u = list(parallel_results)
-        end_time = time.time()
-    
-    # --- 3. PRINT RESULTS ---
-        time_taken = end_time - start_time
-        times.append(time_taken)
-        with open(master_file_path, "a") as out_file:
-            out_file.write(f"Time taken with chunksize={c_size:02d}: {time_taken:.2f} seconds\n")
+            time_taken = end_time - start_time
+            results_matrix[c_size].append(time_taken)
             
-        print(f"Finished evaluating chunksize={c_size}!")        
-        # stat_keys = ['mean_temp', 'std_temp', 'pct_above_18', 'pct_below_15']
-        # print('building_id, ' + ', '.join(stat_keys))
-        # for i, bid in enumerate(building_ids):
-        #     # We also need to extract out the interior mask again to print the stats
-        #     _, interior_mask = floorplans_data[i] 
-        #     stats = summary_stats(all_u[i], interior_mask)
-        #     print(f"{bid},", ", ".join(str(stats[k]) for k in stat_keys))
+            with open(master_file_path, "a") as out_file:
+                out_file.write(f"Chunksize={c_size:02d} | Workers={num_workers:02d} | Time: {time_taken:.2f} seconds\n")
+            print(f"Finished chunksize={c_size} with {num_workers} workers!")
 
-    # --- 4. AUTO-GENERATE GRAPH ---
+    # --- 4. AUTO-GENERATE MULTI-LINE GRAPH ---
     import matplotlib.pyplot as plt
 
-    # Calculate Speedup (T_serial / T_parallel)
-    t_serial = times[0] # The time for 1 worker
-    speedups = [t_serial / t for t in times]
-
     plt.figure(figsize=(10, 6))
+    colors = ['dodgerblue', 'mediumseagreen', 'crimson']
 
-    # Plot actual speedup with larger markers
-    plt.plot(chunk_sizes, speedups, marker='o', color='crimson', linewidth=3, markersize=8)
+    # Because Speedup gets messy comparing 2 variables, let's just plot Raw Execution Time!
+    for idx, c_size in enumerate(chunk_sizes):
+        times = results_matrix[c_size]
+        plt.plot(worker_counts, times, label=f'Chunksize={c_size}', marker='o', color=colors[idx], linewidth=3, markersize=8)
 
-    # Annotate each point
-    for i, txt in enumerate(speedups):
-        plt.annotate(f"{txt:.2f}x", 
-                     (chunk_sizes[i], speedups[i]), 
-                     textcoords="offset points", 
-                     xytext=(0, 10), 
-                     ha='center',
-                     fontsize=12,
-                     fontweight='bold')
+        # Annotate each point with its time in seconds
+        for i, val in enumerate(times):
+            plt.annotate(f"{val:.0f}s", 
+                         (worker_counts[i], val), 
+                         textcoords="offset points", 
+                         xytext=(0, 10), 
+                         ha='center',
+                         fontsize=10,
+                         fontweight='bold')
 
-    plt.title('Speedup Growth vs Chunk Size (16 Workers)', fontsize=16, fontweight='bold')
-    plt.xlabel('Chunk Size', fontsize=14)
-    plt.ylabel('Speedup Factor', fontsize=14)
-    plt.xticks(chunk_sizes, fontsize=12)
+    plt.title('Execution Time vs Workers (Grouped by Chunk Size)', fontsize=16, fontweight='bold')
+    plt.xlabel('Number of Workers', fontsize=14)
+    plt.ylabel('Execution Time (seconds) - Lower is Better!', fontsize=14)
+    plt.xticks(worker_counts, fontsize=12)
     plt.yticks(fontsize=12)
+    plt.legend(title="Dynamic Chunksize", fontsize=12)
     plt.grid(True, linestyle='--', alpha=0.5)
     plt.tight_layout()
 
-    plt.savefig('output/task6/speedup_plot.png', dpi=300)
-    print("Plot successfully saved to output/task6/3_chunks_speedup_plot.png!")
+    plt.savefig('output/task6/2d_benchmark_plot.png', dpi=300)
+    print("Plot successfully saved to output/task6/2d_benchmark_plot.png!")

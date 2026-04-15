@@ -1,3 +1,4 @@
---- Chunk Size Benchmark Results ---
+--- Chunk Size Benchmark Results ---(16 cores)
 Time taken with chunksize=01: 171.14 seconds
 Time taken with chunksize=03: 190.80 seconds
+Time taken with chunksize=10: 297.45 seconds

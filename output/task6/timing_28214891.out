@@ -2,3 +2,64 @@ No GPU on this node, CUDA module not loaded
 Starting chunk size benchmark on 16 workers...
 Finished evaluating chunksize=1!
 Finished evaluating chunksize=3!
+Finished evaluating chunksize=10!
+Plot successfully saved to output/task6/3_chunks_speedup_plot.png!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28214891: <timing> in cluster <dcc> Done
+
+Job <timing> was submitted from host <n-62-30-4> by user <s253003> in cluster <dcc> at Wed Apr 15 10:41:57 2026
+Job was executed on host(s) <16*n-62-11-58>, in queue <hpc>, as user <s253003> in cluster <dcc> at Wed Apr 15 10:41:58 2026
+</zhome/21/8/223277> was used as the home directory.
+</zhome/21/8/223277/Desktop/PYHPC> was used as the working directory.
+Started at Wed Apr 15 10:41:58 2026
+Terminated at Wed Apr 15 10:53:02 2026
+Results reported at Wed Apr 15 10:53:02 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J timing
+#BSUB -q hpc
+#BSUB -W 120
+#BSUB -o output/task6/timing_%J.out
+#BSUB -e output/task6/timing_%J.err
+#BSUB -n 16
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4096MB]"
+#BSUB -R "select[model==XeonGold6226R]"
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613_2026
+
+#Run script
+python -u python/Task6/6_dynamic_scheduling.py 
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   6810.62 sec.
+    Max Memory :                                 1314 MB
+    Average Memory :                             1053.50 MB
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               64222.00 MB
+    Max Swap :                                   -
+    Max Processes :                              20
+    Max Threads :                                24
+    Run time :                                   664 sec.
+    Turnaround time :                            665 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <output/task6/timing_28214891.err> for stderr output of this job.
+
