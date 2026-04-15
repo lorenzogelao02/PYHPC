@@ -75,15 +75,15 @@ def load_data(load_dir, bid):
 #     return u
 
 #New version to control the memory access which has been random so far
-# @jit(nopython=True)
+@jit(nopython=True)
 def jacobi(u, interior_mask, max_iter, atol=1e-6):
     u = np.copy(u)
-    n, m = u.shape
+    n, m = interior_mask.shape
     max_delta = 0.0
     for _ in range(max_iter):
         for i in range(1, n-1):
             for j in range(1, m-1):
-                if interior_mask[i, j]:
+                if interior_mask[i-1, j-1]:
                     u_new_val = 0.25*(u[i-1, j]+u[i+1, j]+u[i, j+1]+u[i, j-1])
                     delta = np.abs(u[i, j]-u_new_val)
                     u[i, j] = u_new_val
@@ -106,10 +106,10 @@ def summary_stats(u, interior_mask):
         'pct_below_15': pct_below_15,
     }
 
-def warmup():
-    dummy_u = np.zeros((10, 10), dtype=np.float64)
-    dummy_mask = np.ones((8, 8), dtype=np.bool_)
-    jacobi(dummy_u, dummy_mask, 1, 1e-4)
+# def warmup():
+#     dummy_u = np.zeros((10, 10), dtype=np.float64)
+#     dummy_mask = np.ones((8, 8), dtype=np.bool_)
+#     jacobi(dummy_u, dummy_mask, 1, 1e-4)
 
 # @profile
 def process_single(floorplan):

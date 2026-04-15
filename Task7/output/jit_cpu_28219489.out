@@ -1,0 +1,66 @@
+No GPU on this node, CUDA module not loaded
+Starting chunk size benchmark on 16 workers...
+Finished evaluating chunksize=1!
+Plot successfully saved to output/speedup_plotprofiling.png!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28219489: <jit_cpu> in cluster <dcc> Done
+
+Job <jit_cpu> was submitted from host <n-62-30-2> by user <s257640> in cluster <dcc> at Wed Apr 15 16:52:46 2026
+Job was executed on host(s) <16*n-62-11-68>, in queue <hpc>, as user <s257640> in cluster <dcc> at Wed Apr 15 16:52:47 2026
+</zhome/b6/8/228751> was used as the home directory.
+</zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7> was used as the working directory.
+Started at Wed Apr 15 16:52:47 2026
+Terminated at Wed Apr 15 16:54:01 2026
+Results reported at Wed Apr 15 16:54:01 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J jit_cpu
+#BSUB -q hpc
+#BSUB -W 120
+#BSUB -o output/jit_cpu_%J.out
+#BSUB -e output/jit_cpu_%J.err
+#BSUB -n 16
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=1024MB]"
+#BSUB -R "select[model==XeonGold6226R]"
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613_2026
+
+#Run script
+python -u 7_jit_cpu.py profiling
+# python -m cProfile -s cumulative 7_jit_cpu.py _mem_opt
+# kernprof -l 7_jit_cpu.py profiling
+# python -m line_profiler -rmt r'/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task7/7_jit_cpu.py.lprof'
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   969.81 sec.
+    Max Memory :                                 588 MB
+    Average Memory :                             401.33 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               15796.00 MB
+    Max Swap :                                   -
+    Max Processes :                              20
+    Max Threads :                                24
+    Run time :                                   74 sec.
+    Turnaround time :                            75 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <output/jit_cpu_28219489.err> for stderr output of this job.
+

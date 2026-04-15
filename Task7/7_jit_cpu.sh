@@ -1,12 +1,12 @@
 #!/bin/bash
-#BSUB -J jit_cpu
+#BSUB -J jit_cpu_1
 #BSUB -q hpc
 #BSUB -W 120
 #BSUB -o output/jit_cpu_%J.out
 #BSUB -e output/jit_cpu_%J.err
 #BSUB -n 16
 #BSUB -R "span[hosts=1]"
-#BSUB -R "rusage[mem=1024MB]"
+#BSUB -R "rusage[mem=4096MB]"
 #BSUB -R "select[model==XeonGold6226R]"
 
 #Initialize python env
