@@ -1,0 +1,64 @@
+Warming up GPU and compiling kernel...
+Running CUDA benchmark on 2 floorplans (20,000 iterations each)...
+Time for 2 floorplans: 2.06 seconds
+Average time per floorplan: 1.03 seconds
+Estimated time to process ALL floorplans sequentially on GPU: 80.57 hours
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28292348: <cuda_bench> in cluster <dcc> Done
+
+Job <cuda_bench> was submitted from host <n-62-30-4> by user <s253003> in cluster <dcc> at Sun Apr 26 12:42:27 2026
+Job was executed on host(s) <n-62-20-3>, in queue <gpuv100>, as user <s253003> in cluster <dcc> at Sun Apr 26 12:42:29 2026
+</zhome/21/8/223277> was used as the home directory.
+</zhome/21/8/223277/Desktop/PYHPC> was used as the working directory.
+Started at Sun Apr 26 12:42:29 2026
+Terminated at Sun Apr 26 12:42:36 2026
+Results reported at Sun Apr 26 12:42:36 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J cuda_bench
+#BSUB -q gpuv100
+#BSUB -gpu "num=1:mode=shared"
+#BSUB -W 15
+#BSUB -o Task8/cuda_%J.out
+#BSUB -e Task8/cuda_%J.err
+#BSUB -n 1
+#BSUB -R "rusage[mem=4096MB]"
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613_2026
+
+#Run script
+python -u Task8/8_cuda.py
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3.81 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   7 sec.
+    Turnaround time :                            9 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <Task8/cuda_28292348.err> for stderr output of this job.
+
