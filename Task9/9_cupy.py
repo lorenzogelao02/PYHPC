@@ -1,8 +1,10 @@
 import cupy as cp
 
 def jacobi_cupy(u, interior_mask, max_iter):
-    
-    pass
+    for _ in range(max_iter):
+        u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
+        u[1:-1, 1:-1] = cp.where(interior_mask, u_new, u[1:-1, 1:-1])
+    return u
 
 if __name__ == '__main__':
     import time
@@ -11,10 +13,12 @@ if __name__ == '__main__':
     
     def load_data(load_dir, bid):
         SIZE = 512
+        import numpy as np
         u = cp.zeros((SIZE + 2, SIZE + 2), dtype=cp.float32)
-        u[1:-1, 1:-1] = cp.load(join(load_dir, f"{bid}_domain.npy"))
-        interior_mask = cp.load(join(load_dir, f"{bid}_interior.npy"))
-        return cp.ascontiguousarray(u), cp.ascontiguousarray(interior_mask)
+        # Using np.load then cp.asarray is much faster and safer than cp.load directly
+        u[1:-1, 1:-1] = cp.asarray(np.load(join(load_dir, f"{bid}_domain.npy")))
+        interior_mask = cp.asarray(np.load(join(load_dir, f"{bid}_interior.npy")))
+        return u, interior_mask
 
     LOAD_DIR = '/dtu/projects/02613_2025/data/modified_swiss_dwellings/'
     with open(join(LOAD_DIR, 'building_ids.txt'), 'r') as f:

@@ -1,0 +1,66 @@
+Warming up GPU...
+Running CuPy benchmark on 2 floorplans (20,000 iterations each)...
+Time for 2 floorplans: 4.59 seconds
+Average time per floorplan: 2.29 seconds
+Estimated time to process ALL floorplans sequentially on GPU: 179.74 hours
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28307374: <cupy_bench> in cluster <dcc> Done
+
+Job <cupy_bench> was submitted from host <hpclogin1> by user <s253003> in cluster <dcc> at Mon Apr 27 18:04:20 2026
+Job was executed on host(s) <n-62-20-5>, in queue <gpuv100>, as user <s253003> in cluster <dcc> at Mon Apr 27 18:04:22 2026
+</zhome/21/8/223277> was used as the home directory.
+</zhome/21/8/223277/Desktop/PYHPC> was used as the working directory.
+Started at Mon Apr 27 18:04:22 2026
+Terminated at Mon Apr 27 18:04:30 2026
+Results reported at Mon Apr 27 18:04:30 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J cupy_bench
+#BSUB -q gpuv100
+#BSUB -gpu "num=1:mode=shared"
+#BSUB -W 15
+#BSUB -o Task9/cupy_%J.out
+#BSUB -e Task9/cupy_%J.err
+#BSUB -n 1
+#BSUB -R "rusage[mem=4096MB]"
+#BSUB -R "span[hosts=1]"
+
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613
+
+#Run script
+python -u Task9/9_cupy.py
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   6.57 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   8 sec.
+    Turnaround time :                            10 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <Task9/cupy_28307374.err> for stderr output of this job.
+
