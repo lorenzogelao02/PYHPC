@@ -1,0 +1,154 @@
+Warming up GPU...
+Running CuPy benchmark on 2 floorplans (20,000 iterations each)...
+Time for 2 floorplans: 2.22 seconds
+Average time per floorplan: 1.11 seconds
+Estimated time to process ALL floorplans sequentially on GPU: 87.09 hours
+Generating '/tmp/nsys-report-d290.qdstrm'
+[1/8] [0%                          ] report2.nsys-rep[1/8] [0%                          ] report2.nsys-rep[1/8] [0%                          ] report2.nsys-rep[1/8] [5%                          ] report2.nsys-rep[1/8] [0%                          ] report2.nsys-rep[1/8] [9%                          ] report2.nsys-rep[1/8] [==18%                       ] report2.nsys-rep[1/8] [====27%                     ] report2.nsys-rep[1/8] [=======37%                  ] report2.nsys-rep[1/8] [=========46%                ] report2.nsys-rep[1/8] [============55%             ] report2.nsys-rep[1/8] [==============64%           ] report2.nsys-rep[1/8] [=================73%        ] report2.nsys-rep[1/8] [==================75%       ] report2.nsys-rep[1/8] [========================100%] report2.nsys-rep[1/8] [========================100%] report2.nsys-rep
+[2/8] [0%                          ] report2.sqlite[2/8] [1%                          ] report2.sqlite[2/8] [2%                          ] report2.sqlite[2/8] [3%                          ] report2.sqlite[2/8] [4%                          ] report2.sqlite[2/8] [5%                          ] report2.sqlite[2/8] [6%                          ] report2.sqlite[2/8] [7%                          ] report2.sqlite[2/8] [8%                          ] report2.sqlite[2/8] [9%                          ] report2.sqlite[2/8] [10%                         ] report2.sqlite[2/8] [11%                         ] report2.sqlite[2/8] [12%                         ] report2.sqlite[2/8] [13%                         ] report2.sqlite[2/8] [14%                         ] report2.sqlite[2/8] [=15%                        ] report2.sqlite[2/8] [=16%                        ] report2.sqlite[2/8] [=17%                        ] report2.sqlite[2/8] [==18%                       ] report2.sqlite[2/8] [==19%                       ] report2.sqlite[2/8] [==20%                       ] report2.sqlite[2/8] [==21%                       ] report2.sqlite[2/8] [===22%                      ] report2.sqlite[2/8] [===23%                      ] report2.sqlite[2/8] [===24%                      ] report2.sqlite[2/8] [====25%                     ] report2.sqlite[2/8] [====26%                     ] report2.sqlite[2/8] [====27%                     ] report2.sqlite[2/8] [====28%                     ] report2.sqlite[2/8] [=====29%                    ] report2.sqlite[2/8] [=====30%                    ] report2.sqlite[2/8] [=====31%                    ] report2.sqlite[2/8] [=====32%                    ] report2.sqlite[2/8] [======33%                   ] report2.sqlite[2/8] [======34%                   ] report2.sqlite[2/8] [======35%                   ] report2.sqlite[2/8] [=======36%                  ] report2.sqlite[2/8] [=======37%                  ] report2.sqlite[2/8] [=======38%                  ] report2.sqlite[2/8] [=======39%                  ] report2.sqlite[2/8] [========40%                 ] report2.sqlite[2/8] [========41%                 ] report2.sqlite[2/8] [========42%                 ] report2.sqlite[2/8] [=========43%                ] report2.sqlite[2/8] [=========44%                ] report2.sqlite[2/8] [=========45%                ] report2.sqlite[2/8] [=========46%                ] report2.sqlite[2/8] [==========47%               ] report2.sqlite[2/8] [==========48%               ] report2.sqlite[2/8] [==========49%               ] report2.sqlite[2/8] [===========50%              ] report2.sqlite[2/8] [===========51%              ] report2.sqlite[2/8] [===========52%              ] report2.sqlite[2/8] [===========53%              ] report2.sqlite[2/8] [============54%             ] report2.sqlite[2/8] [============55%             ] report2.sqlite[2/8] [============56%             ] report2.sqlite[2/8] [============57%             ] report2.sqlite[2/8] [=============58%            ] report2.sqlite[2/8] [=============59%            ] report2.sqlite[2/8] [=============60%            ] report2.sqlite[2/8] [==============61%           ] report2.sqlite[2/8] [==============62%           ] report2.sqlite[2/8] [==============63%           ] report2.sqlite[2/8] [==============64%           ] report2.sqlite[2/8] [===============65%          ] report2.sqlite[2/8] [===============66%          ] report2.sqlite[2/8] [===============67%          ] report2.sqlite[2/8] [================68%         ] report2.sqlite[2/8] [================69%         ] report2.sqlite[2/8] [================70%         ] report2.sqlite[2/8] [================71%         ] report2.sqlite[2/8] [=================72%        ] report2.sqlite[2/8] [=================73%        ] report2.sqlite[2/8] [=================74%        ] report2.sqlite[2/8] [==================75%       ] report2.sqlite[2/8] [==================76%       ] report2.sqlite[2/8] [==================77%       ] report2.sqlite[2/8] [==================78%       ] report2.sqlite[2/8] [===================79%      ] report2.sqlite[2/8] [===================80%      ] report2.sqlite[2/8] [===================81%      ] report2.sqlite[2/8] [===================82%      ] report2.sqlite[2/8] [====================83%     ] report2.sqlite[2/8] [====================84%     ] report2.sqlite[2/8] [====================85%     ] report2.sqlite[2/8] [=====================86%    ] report2.sqlite[2/8] [=====================87%    ] report2.sqlite[2/8] [=====================88%    ] report2.sqlite[2/8] [=====================89%    ] report2.sqlite[2/8] [======================90%   ] report2.sqlite[2/8] [======================91%   ] report2.sqlite[2/8] [======================92%   ] report2.sqlite[2/8] [=======================93%  ] report2.sqlite[2/8] [=======================94%  ] report2.sqlite[2/8] [=======================95%  ] report2.sqlite[2/8] [=======================96%  ] report2.sqlite[2/8] [========================97% ] report2.sqlite[2/8] [========================98% ] report2.sqlite[2/8] [========================99% ] report2.sqlite[2/8] [========================100%] report2.sqlite[2/8] [========================100%] report2.sqlite
+[3/8] Executing 'nvtxsum' stats report
+[4/8] Executing 'osrtsum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)     Med (ns)    Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  -----------  -----------  --------  ---------  -----------  ----------------------
+     46.8       2692747126         41   65676759.2  100173406.0      2227  135769295   46338623.9  poll                  
+     46.7       2687918413          6  447986402.2  444789531.0  22618167  879424718  271228579.7  sem_wait              
+      4.5        258311512        857     301413.7     293923.0      1858     610404     114711.2  open64                
+      1.6         91905935        669     137378.1      26040.0      1000   33761672    1326884.5  ioctl                 
+      0.2          8893880       1078       8250.4       2541.0      1002     399341      20887.3  read                  
+      0.1          5731021        307      18667.8       2509.0      1890    3923986     224090.4  mmap64                
+      0.0          2825377        928       3044.6       2939.5      1325     117422       4169.2  fclose                
+      0.0          2092819          9     232535.4      47464.0      3623     985767     333238.3  fread                 
+      0.0          1574044         41      38391.3       4900.0      3154     616542     111067.1  fopen                 
+      0.0          1537631        254       6053.7       5190.5      4330      17270       2166.4  munmap                
+      0.0          1121550        225       4984.7       2487.0      1012      74449       6681.7  fgets                 
+      0.0           960090          4     240022.5     240616.0     48470     430388     212923.5  pthread_create        
+      0.0           777615         12      64801.3      84432.5     10382     101483      37951.4  sem_timedwait         
+      0.0           736323          8      92040.4       5027.0      3971     487811     174966.6  fopen64               
+      0.0           564509         20      28225.5      16828.0      2842     183063      42464.3  mmap                  
+      0.0           153817          1     153817.0     153817.0    153817     153817          0.0  pthread_cond_wait     
+      0.0            73265         22       3330.2       2452.5      1055      15556       3427.0  write                 
+      0.0            52495          1      52495.0      52495.0     52495      52495          0.0  waitpid               
+      0.0            52444          6       8740.7       9545.5      3954      12738       3520.7  pipe2                 
+      0.0            46884         31       1512.4       1464.0      1021       2498        446.8  fcntl                 
+      0.0            32324          6       5387.3       5973.5      2391       7320       1949.5  open                  
+      0.0            26935          8       3366.9       3217.0      1340       6188       1833.0  pthread_cond_signal   
+      0.0            21976          2      10988.0      10988.0     10353      11623        898.0  socket                
+      0.0            10759          1      10759.0      10759.0     10759      10759          0.0  connect               
+      0.0             7966          1       7966.0       7966.0      7966       7966          0.0  fflush                
+      0.0             7714          3       2571.3       2403.0      1899       3412        770.4  signal                
+      0.0             7166          4       1791.5       1746.5      1007       2666        687.8  sigaction             
+      0.0             5857          2       2928.5       2928.5      2904       2953         34.6  pthread_cond_broadcast
+      0.0             5288          2       2644.0       2644.0      2037       3251        858.4  fwrite                
+      0.0             4679          1       4679.0       4679.0      4679       4679          0.0  fputs                 
+      0.0             2647          1       2647.0       2647.0      2647       2647          0.0  bind                  
+      0.0             1671          1       1671.0       1671.0      1671       1671          0.0  dup2                  
+      0.0             1588          1       1588.0       1588.0      1588       1588          0.0  pthread_mutex_trylock 
+      0.0             1476          1       1476.0       1476.0      1476       1476          0.0  listen                
+      0.0             1443          1       1443.0       1443.0      1443       1443          0.0  dup                   
+
+[5/8] Executing 'cudaapisum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)   Med (ns)   Min (ns)  Max (ns)   StdDev (ns)              Name            
+ --------  ---------------  ---------  ----------  ---------  --------  ---------  -----------  ----------------------------
+     71.6        398382299      80023      4978.3     4925.0      4325     962392       3480.6  cuLaunchKernel              
+     26.9        149778307          4  37444576.8   443059.0    275708  148616481   74114678.0  cudaMalloc                  
+      0.7          3867086          3   1289028.7  1411846.0    933216    1522024     313028.4  cuModuleLoadData            
+      0.5          3032993          2   1516496.5  1516496.5   1486311    1546682      42688.7  cudaHostAlloc               
+      0.1           771968          3    257322.7   279330.0     79180     413458     168222.1  cuModuleUnload              
+      0.0            98173          6     16362.2    15918.5     12234      22126       3366.7  cudaMemcpyAsync             
+      0.0            87164          3     29054.7    34376.0     14945      37843      12341.7  cudaMemsetAsync             
+      0.0            79350          1     79350.0    79350.0     79350      79350          0.0  cudaMemGetInfo              
+      0.0            53579         11      4870.8     4427.0      1375      11611       3148.2  cudaEventQuery              
+      0.0            33355          6      5559.2     5173.0      3412      10277       2495.2  cudaEventRecord             
+      0.0            28903          6      4817.2     4108.5      2387      10539       2904.4  cudaEventCreateWithFlags    
+      0.0            15138          5      3027.6     2659.0      2148       4538        969.9  cudaEventDestroy            
+      0.0            13871          6      2311.8     2470.5      1431       3037        653.7  cudaStreamIsCapturing_v10000
+      0.0             2017          1      2017.0     2017.0      2017       2017          0.0  cuModuleGetLoadingMode      
+
+[6/8] Executing 'gpukernsum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)     GridXYZ         BlockXYZ                Name           
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  --------------  --------------  --------------------------
+     52.4        252445710      40010    6309.6    6240.0      6175     19295        294.3  2048    1    1   128    1    1  compute_iteration         
+     47.6        229486756      40010    5735.7    5696.0      5631     19680        193.1  2048    1    1   128    1    1  cupy_copy__float32_float32
+      0.0            25184          3    8394.7    8896.0      6784      9504       1427.6  2048    1    1   128    1    1  cupy_copy__float64_float32
+
+[7/8] Executing 'gpumemtimesum' stats report
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)      Operation     
+ --------  ---------------  -----  --------  --------  --------  --------  -----------  ------------------
+     98.2           607003      6  101167.2   99823.5     24480    183070      83438.9  [CUDA memcpy HtoD]
+      1.8            11040      3    3680.0    3488.0      3456      4096        360.6  [CUDA memset]     
+
+[8/8] Executing 'gpumemsizesum' stats report
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)      Operation     
+ ----------  -----  --------  --------  --------  --------  -----------  ------------------
+      7.078      6     1.180     1.180     0.262     2.097        1.005  [CUDA memcpy HtoD]
+      3.170      3     1.057     1.057     1.057     1.057        0.000  [CUDA memset]     
+
+Generated:
+    /zhome/21/8/223277/Desktop/PYHPC/report2.nsys-rep
+    /zhome/21/8/223277/Desktop/PYHPC/report2.sqlite
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28313325: <cupy_bench> in cluster <dcc> Done
+
+Job <cupy_bench> was submitted from host <hpclogin1> by user <s253003> in cluster <dcc> at Tue Apr 28 12:35:41 2026
+Job was executed on host(s) <n-62-20-10>, in queue <gpuv100>, as user <s253003> in cluster <dcc> at Tue Apr 28 12:35:43 2026
+</zhome/21/8/223277> was used as the home directory.
+</zhome/21/8/223277/Desktop/PYHPC> was used as the working directory.
+Started at Tue Apr 28 12:35:43 2026
+Terminated at Tue Apr 28 12:35:54 2026
+Results reported at Tue Apr 28 12:35:54 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J cupy_bench
+#BSUB -q gpuv100
+#BSUB -gpu "num=1:mode=shared"
+#BSUB -W 15
+#BSUB -o Task10/cupy_%J.out
+#BSUB -e Task10/cupy_%J.err
+#BSUB -n 1
+#BSUB -R "rusage[mem=4096MB]"
+#BSUB -R "span[hosts=1]"
+
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613
+
+#Run script with Nsight Systems Profiler
+nsys profile --stats=true python -u Task10/10_solution.py
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1.08 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   11 sec.
+    Turnaround time :                            13 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <Task10/cupy_28313325.err> for stderr output of this job.
+
