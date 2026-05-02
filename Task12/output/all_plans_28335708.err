@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task12/12_jit_cpu.py", line 97, in <module>
+    plt.savefig('temp_distribution.png', dpi = 600, bbox_inches = "Tight")
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/matplotlib/pyplot.py", line 1250, in savefig
+    res = fig.savefig(*args, **kwargs)  # type: ignore[func-returns-value]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/matplotlib/figure.py", line 3490, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/matplotlib/backend_bases.py", line 2173, in print_figure
+    restore_bbox = _tight_bbox.adjust_bbox(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/matplotlib/_tight_bbox.py", line 59, in adjust_bbox
+    fig.bbox_inches = Bbox.from_bounds(0, 0, *bbox_inches.size)
+                                              ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'size'
