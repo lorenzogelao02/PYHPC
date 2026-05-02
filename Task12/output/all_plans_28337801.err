@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task12/12_jit_cpu.py", line 107, in <module>
+    ax.set_yticks(ticker.MultipleLocator(1))
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/matplotlib/axes/_base.py", line 74, in wrapper
+    return get_method(self)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/matplotlib/axis.py", line 2218, in set_ticks
+    result = self._set_tick_locations(ticks, minor=minor)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/matplotlib/axis.py", line 2159, in _set_tick_locations
+    locator = mticker.FixedLocator(ticks)  # validate ticks early.
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/matplotlib/ticker.py", line 1781, in __init__
+    _api.check_shape((None,), locs=self.locs)
+  File "/dtu/projects/02613_2025/conda/miniconda3/envs/02613_2026/lib/python3.12/site-packages/matplotlib/_api/__init__.py", line 176, in check_shape
+    raise ValueError(
+ValueError: 'locs' must be 1D with shape (N,), but your input has shape ()

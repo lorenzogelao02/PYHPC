@@ -20,6 +20,7 @@ def load_data(load_dir, bid):
 @jit(nopython=True, fastmath=True)
 def jacobi(u, interior_mask, max_iter, atol=1e-6):
     u = np.copy(u)
+    u_new = np.copy(u)
     n, m = interior_mask.shape
     for _ in range(max_iter):
         max_delta = 0.0
@@ -28,9 +29,10 @@ def jacobi(u, interior_mask, max_iter, atol=1e-6):
                 if interior_mask[i-1, j-1]:
                     u_new_val = 0.25*(u[i-1, j]+u[i+1, j]+u[i, j+1]+u[i, j-1])
                     delta = np.abs(u[i, j]-u_new_val)
-                    u[i, j] = u_new_val
+                    u_new[i, j] = u_new_val
                     if delta > max_delta:
                         max_delta=delta
+        u, u_new = u_new, u
         if max_delta < atol:
             break
     return u
@@ -92,7 +94,7 @@ if __name__ == '__main__' :
         stats = summary_stats(u, interior_mask)
         rows.append({'building_id': bid, **stats})
     df = pd.DataFrame(rows)
-    df.to_csv(r'output/summary_stats.csv')
+    df.to_csv(r'output/corr_summary_stats.csv')
     temps = df["mean_temp"]
 
     #Histogram
@@ -110,7 +112,7 @@ if __name__ == '__main__' :
     ax.grid(True, alpha=0.2)
     ax.legend()
     fig.tight_layout()
-    fig.savefig(r"output/temp_distribution.png", dpi=600, bbox_inches="tight")
+    fig.savefig(r"output/corr_temp_distribution.png", dpi=600, bbox_inches="tight")
 
 
     # #Histogram

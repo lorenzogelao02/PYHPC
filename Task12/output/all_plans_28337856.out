@@ -1,0 +1,64 @@
+No GPU on this node, CUDA module not loaded
+The average mean temperature is: 9.817894240495214
+The associated standard deviation is: 4.078968819871562
+The number of floorplans with 50% above 18 °C: 283
+The number of floorplans with 50% below 15 °C: 3856
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28337856: <all_plans> in cluster <dcc> Done
+
+Job <all_plans> was submitted from host <n-62-27-22> by user <s257640> in cluster <dcc> at Sat May  2 16:54:19 2026
+Job was executed on host(s) <16*n-62-11-57>, in queue <hpc>, as user <s257640> in cluster <dcc> at Sat May  2 16:54:20 2026
+</zhome/b6/8/228751> was used as the home directory.
+</zhome/b6/8/228751/py_hpc/mini_project/PYHPC/Task12> was used as the working directory.
+Started at Sat May  2 16:54:20 2026
+Terminated at Sat May  2 17:07:06 2026
+Results reported at Sat May  2 17:07:06 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J all_plans
+#BSUB -q hpc
+#BSUB -W 120
+#BSUB -o output/all_plans_%J.out
+#BSUB -e output/all_plans_%J.err
+#BSUB -n 16
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4096MB]"
+#BSUB -R "select[model==XeonGold6226R]"
+
+#Initialize python env
+source /dtu/projects/02613_2025/conda/conda_init.sh
+conda activate 02613_2026
+
+#Run script
+python -u 12_jit_cpu.py all
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   11449.18 sec.
+    Max Memory :                                 19451 MB
+    Average Memory :                             15081.75 MB
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               46085.00 MB
+    Max Swap :                                   -
+    Max Processes :                              20
+    Max Threads :                                25
+    Run time :                                   766 sec.
+    Turnaround time :                            767 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <output/all_plans_28337856.err> for stderr output of this job.
+
